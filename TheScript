@@ -1,7 +1,7 @@
 -- Copyright (C) 2025 hellohellohell012321
 -- Licensed under the GNU GPL v3. See LICENSE file for details.
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/hellohellohell012321/starving-artists/main/test.lua", true))() -- compatibility
+loadstring(game:HttpGet("https://raw.githubusercontent.com/PROIK55/StarvingArtistsAutoDrawScripts/refs/heads/main/test.lua", true))() -- compatibility
 
 local NotificationLibrary =
     loadstring(game:HttpGet("https://raw.githubusercontent.com/hellohellohell012321/TALENTLESS/main/notif_lib.lua"))(
