@@ -8,7 +8,7 @@ local NotificationLibrary =
 )
 
 loadstring(
-    game:HttpGet("https://raw.githubusercontent.com/hellohellohell012321/discordpopup/main/discordpopup.lua", true)
+    game:HttpGet("https://raw.githubusercontent.com/PROIK55/StarvingArtistsAutoDrawScripts/refs/heads/main/discordpopup.lua", true)
 )()
 
 local ScreenGui = Instance.new("ScreenGui")
