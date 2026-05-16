@@ -11,22 +11,6 @@ loadstring(
     game:HttpGet("https://raw.githubusercontent.com/PROIK55/StarvingArtistsAutoDrawScripts/refs/heads/main/discordpopup.lua", true)
 )()
 
--- Copyright (C) 2025 hellohellohell012321
--- Licensed under the GNU GPL v3. See LICENSE file for details.
-
-loadstring(game:HttpGet("https://raw.githubusercontent.com/PROIK55/StarvingArtistsAutoDrawScripts/refs/heads/main/test.lua", true))()
-
-local NotificationLibrary =
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/PROIK55/StarvingArtistsAutoDrawScripts/refs/heads/main/notif_lib.lua"))()
-
-loadstring(
-    game:HttpGet("https://raw.githubusercontent.com/PROIK55/StarvingArtistsAutoDrawScripts/refs/heads/main/discordpopup.lua", true)
-)()
-
-local UIS = game:GetService("UserInputService")
-
-local isMobile = UIS.TouchEnabled and not UIS.KeyboardEnabled
-
 local ScreenGui = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
 local title = Instance.new("TextLabel")
@@ -35,100 +19,96 @@ local IMG_URL_BOX = Instance.new("TextBox")
 local creds_2 = Instance.new("TextLabel")
 local gobutton = Instance.new("Frame")
 local go = Instance.new("TextButton")
+local img = Instance.new("ImageLabel")
+local TextButton = Instance.new("TextButton")
 local closebutton = Instance.new("TextButton")
 
 ScreenGui.Parent = game:GetService("CoreGui")
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-ScreenGui.ResetOnSpawn = true
+ScreenGui.ResetOnSpawn = false
 
 Frame.Parent = ScreenGui
-Frame.BackgroundColor3 = Color3.fromRGB(255,255,255)
-Frame.BorderColor3 = Color3.fromRGB(0,0,0)
+Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Frame.BorderSizePixel = 2
-Frame.AnchorPoint = Vector2.new(0.5,0.5)
-Frame.Position = UDim2.new(0.5,0,0.5,0)
-Frame.Active = true
+Frame.Position = UDim2.new(0.5, 0, 0.5, 0)
+Frame.AnchorPoint = Vector2.new(0.5, 0.5)
+Frame.Size = UDim2.new(0.9, 0, 0, 230)
 
-if isMobile then
-    Frame.Size = UDim2.new(0.9,0,0.32,0)
-else
-    Frame.Size = UDim2.new(0,425,0,219)
-end
+local frameConstraint = Instance.new("UISizeConstraint")
+frameConstraint.Parent = Frame
+frameConstraint.MinSize = Vector2.new(290, 210)
+frameConstraint.MaxSize = Vector2.new(425, 230)
 
 title.Parent = Frame
-title.BackgroundColor3 = Color3.fromRGB(255,255,255)
-title.BorderColor3 = Color3.fromRGB(0,0,0)
-title.BorderSizePixel = 2
-title.Size = UDim2.new(1,0,0.22,0)
-title.Font = Enum.Font.SourceSansBold
+title.BackgroundTransparency = 1
+title.Position = UDim2.new(0.05, 0, 0.04, 0)
+title.Size = UDim2.new(0.9, 0, 0, 45)
+title.Font = Enum.Font.SourceSans
 title.Text = "stupid ass starving artists autodrawer"
-title.TextColor3 = Color3.fromRGB(0,0,0)
+title.TextColor3 = Color3.fromRGB(0, 0, 0)
 title.TextScaled = true
+title.TextWrapped = true
 
-creds.Parent = Frame
-creds.BackgroundTransparency = 1
-creds.Position = UDim2.new(0,0,0.9,0)
-creds.Size = UDim2.new(1,0,0.08,0)
-creds.Font = Enum.Font.SourceSans
-creds.Text = "made by hellohellohell012321"
-creds.TextColor3 = Color3.fromRGB(0,0,0)
-creds.TextScaled = true
+local titleSizeConstraint = Instance.new("UITextSizeConstraint")
+titleSizeConstraint.Parent = title
+titleSizeConstraint.MinTextSize = 16
+titleSizeConstraint.MaxTextSize = 29
 
-creds_2.Parent = Frame
-creds_2.BackgroundTransparency = 1
-creds_2.Position = UDim2.new(0.05,0,0.28,0)
-creds_2.Size = UDim2.new(0.9,0,0.08,0)
-creds_2.Font = Enum.Font.SourceSans
-creds_2.Text = "insert image URL/address:"
-creds_2.TextColor3 = Color3.fromRGB(0,0,0)
-creds_2.TextScaled = true
+closebutton.Parent = Frame
+closebutton.BackgroundColor3 = Color3.fromRGB(230, 70, 70)
+closebutton.BorderSizePixel = 0
+closebutton.Position = UDim2.new(1, -34, 0, 6)
+closebutton.Size = UDim2.new(0, 28, 0, 28)
+closebutton.Font = Enum.Font.SourceSansBold
+closebutton.Text = "X"
+closebutton.TextColor3 = Color3.fromRGB(255, 255, 255)
+closebutton.TextScaled = true
 
 IMG_URL_BOX.Parent = Frame
-IMG_URL_BOX.BackgroundColor3 = Color3.fromRGB(224,222,225)
-IMG_URL_BOX.BorderColor3 = Color3.fromRGB(0,0,0)
-IMG_URL_BOX.BorderSizePixel = 2
-IMG_URL_BOX.Position = UDim2.new(0.05,0,0.4,0)
-IMG_URL_BOX.Size = UDim2.new(0.9,0,0.14,0)
+IMG_URL_BOX.BackgroundColor3 = Color3.fromRGB(245, 245, 245)
+IMG_URL_BOX.BorderSizePixel = 1
+IMG_URL_BOX.Position = UDim2.new(0.08, 0, 0.36, 0)
+IMG_URL_BOX.Size = UDim2.new(0.84, 0, 0, 38)
 IMG_URL_BOX.Font = Enum.Font.SourceSans
-IMG_URL_BOX.PlaceholderText = "https://i.imgur.com/example.png"
 IMG_URL_BOX.Text = ""
-IMG_URL_BOX.TextColor3 = Color3.fromRGB(0,0,0)
+IMG_URL_BOX.TextColor3 = Color3.fromRGB(0, 0, 0)
+IMG_URL_BOX.PlaceholderText = "https://i.imgur.com/wPU8Bq9.jpeg"
 IMG_URL_BOX.TextScaled = true
 IMG_URL_BOX.ClearTextOnFocus = false
 
-gobutton.Parent = Frame
-gobutton.BackgroundColor3 = Color3.fromRGB(0,0,0)
-gobutton.BorderColor3 = Color3.fromRGB(0,0,0)
-gobutton.BorderSizePixel = 2
-gobutton.Position = UDim2.new(0.05,0,0.62,0)
-gobutton.Size = UDim2.new(0.9,0,0.16,0)
+local boxTextConstraint = Instance.new("UITextSizeConstraint")
+boxTextConstraint.Parent = IMG_URL_BOX
+boxTextConstraint.MinTextSize = 12
+boxTextConstraint.MaxTextSize = 18
 
-go.Parent = gobutton
-go.BackgroundColor3 = Color3.fromRGB(255,255,255)
+go.Parent = Frame
+go.BackgroundColor3 = Color3.fromRGB(45, 170, 80)
 go.BorderSizePixel = 0
-go.Size = UDim2.new(1,0,1,0)
+go.Position = UDim2.new(0.16, 0, 0.6, 0)
+go.Size = UDim2.new(0.68, 0, 0, 42)
 go.Font = Enum.Font.SourceSansBold
 go.Text = "autodraw that shit"
-go.TextColor3 = Color3.fromRGB(0,0,0)
+go.TextColor3 = Color3.fromRGB(255, 255, 255)
 go.TextScaled = true
-go.Active = true
-go.Selectable = true
-go.AutoButtonColor = true
 
-closebutton.Parent = Frame
-closebutton.BackgroundColor3 = Color3.fromRGB(255,110,93)
-closebutton.BorderColor3 = Color3.fromRGB(0,0,0)
-closebutton.BorderSizePixel = 2
-closebutton.AnchorPoint = Vector2.new(1,0)
-closebutton.Position = UDim2.new(1,0,0,0)
-closebutton.Size = UDim2.new(0.08,0,0.14,0)
-closebutton.Font = Enum.Font.SourceSansBold
-closebutton.Text = "X"
-closebutton.TextColor3 = Color3.fromRGB(255,255,255)
-closebutton.TextScaled = true
-closebutton.Active = true
-closebutton.Selectable = true
-closebutton.AutoButtonColor = true
+local goTextConstraint = Instance.new("UITextSizeConstraint")
+goTextConstraint.Parent = go
+goTextConstraint.MinTextSize = 14
+goTextConstraint.MaxTextSize = 22
+
+creds.Parent = Frame
+creds.BackgroundTransparency = 1
+creds.Position = UDim2.new(0, 0, 0.84, 0)
+creds.Size = UDim2.new(1, 0, 0, 28)
+creds.Font = Enum.Font.SourceSans
+creds.Text = "made by hellohellohell012321"
+creds.TextColor3 = Color3.fromRGB(0, 0, 0)
+creds.TextScaled = true
+
+local credsTextConstraint = Instance.new("UITextSizeConstraint")
+credsTextConstraint.Parent = creds
+credsTextConstraint.MinTextSize = 11
+credsTextConstraint.MaxTextSize = 16
 
 local function playSound(soundId, loudness)
     local sound = Instance.new("Sound")
@@ -143,7 +123,6 @@ local function changeColor(hex)
     local textBox = player.PlayerGui.MainGui.PaintFrame.ColorFrame.HexCode.TextBox
 
     textBox.Text = hex
-
     for _, connection in ipairs(getconnections(textBox.FocusLost)) do
         connection:Fire(true)
     end
@@ -151,33 +130,23 @@ end
 
 local function goToStool()
     local player = game.Players.LocalPlayer
-
-    local plot = game.Workspace.Plots:FindFirstChild(player.Name)
-
-    if plot and plot:FindFirstChild("Stool") then
-        plot.Stool:Sit(player.Character.Humanoid)
-    end
+    local stool = game.Workspace.Plots[player.Name].Stool
+    stool:Sit(player.Character.Humanoid)
 end
 
 local function auto(imgur)
     local HttpService = game:GetService("HttpService")
+    local httprequest = request or http_request or (syn and syn.request) or (fluxus and fluxus.request)
 
-    local httprequest =
-        request or
-        http_request or
-        (syn and syn.request) or
-        (http and http.request) or
-        (fluxus and fluxus.request)
+    local url = "https://starving-artists-api.vercel.app/api/pixelart"
 
     local response = httprequest({
-        Url = "https://starving-artists-api.vercel.app/api/pixelart",
+        Url = url,
         Method = "POST",
         Headers = {
             ["Content-Type"] = "application/json"
         },
-        Body = HttpService:JSONEncode({
-            imageUrl = imgur
-        })
+        Body = HttpService:JSONEncode({ imageUrl = imgur })
     })
 
     if response and response.StatusCode == 200 then
@@ -186,56 +155,33 @@ local function auto(imgur)
 
         for i = 1, #pixelsTable do
             local player = game:GetService("Players").LocalPlayer
-
-            local location =
-                player.PlayerGui.MainGui.PaintFrame.GridHolder.Grid:FindFirstChild(tostring(i))
+            local location = player.PlayerGui.MainGui.PaintFrame.GridHolder.Grid:FindFirstChild(tostring(i))
 
             if location then
                 changeColor(pixelsTable[i])
-
-                for _, conn in ipairs(
-                    getconnections(
-                        location.MouseButton1Down,
-                        location.MouseButton1Click,
-                        location.MouseButton1Up
-                    )
-                ) do
+                for _, conn in ipairs(getconnections(location.MouseButton1Down, location.MouseButton1Click, location.MouseButton1Up)) do
                     conn:Fire()
                 end
             end
         end
 
-        playSound("6493287948", 0.1)
-
-        NotificationLibrary:SendNotification(
-            "Success",
-            "autodraw finished.",
-            5
-        )
+        spawn(function()
+            playSound("6493287948", 0.1)
+            NotificationLibrary:SendNotification("Success", "autodraw finished.", 5)
+        end)
     else
         playSound("6493287948", 0.1)
-
-        NotificationLibrary:SendNotification(
-            "Error",
-            "Request failed",
-            10
-        )
+        NotificationLibrary:SendNotification("Error", "Request failed", 10)
     end
 end
 
 go.MouseButton1Click:Connect(function()
     goToStool()
-
-    task.wait(0.5)
+    wait(0.5)
 
     local imgurle = IMG_URL_BOX.Text
-
     if imgurle == "" then
-        NotificationLibrary:SendNotification(
-            "Error",
-            "put a valid image url!",
-            5
-        )
+        NotificationLibrary:SendNotification("Error", "put a valid image url!", 5)
     else
         auto(imgurle)
     end
