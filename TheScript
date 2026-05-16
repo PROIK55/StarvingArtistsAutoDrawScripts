@@ -4,7 +4,7 @@
 loadstring(game:HttpGet("https://raw.githubusercontent.com/PROIK55/StarvingArtistsAutoDrawScripts/refs/heads/main/test.lua", true))() -- compatibility
 
 local NotificationLibrary =
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/hellohellohell012321/TALENTLESS/main/notif_lib.lua"))(
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/PROIK55/StarvingArtistsAutoDrawScripts/refs/heads/main/notif_lib.lua"))(
 )
 
 loadstring(
